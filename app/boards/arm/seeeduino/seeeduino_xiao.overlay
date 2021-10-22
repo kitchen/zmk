@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2021 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* This provides a mapping from seeeduino xiao internal ports to xiao-style footprint ports */
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        /delete-property/ zephyr,console;
+        /delete-property/ zephyr,shell-uart;
+    };
+
+    xiao_a: connector_a {
+        compatible = "seeeduino-xiao";
+        #gpio-cells = <2>;
+		gpio-map-mask = <0xffffffff 0xffffffc0>;
+		gpio-map-pass-thru = <0 0x3f>;
+        gpio-map
+        = <0 0 &porta 2 0>
+        , <1 0 &porta 4 0>
+        , <2 0 &porta 10 0>
+        , <3 0 &porta 11 0>
+        , <4 0 &porta 8 0>
+        , <5 0 &porta 9 0>
+        , <6 0 &portb 8 0>
+        , <7 0 &portb 9 0>
+        , <8 0 &porta 7 0>
+        , <9 0 &porta 5 0>
+        , <10 0 &porta 6 0>
+        ;
+    };
+
+    xiao_d: connector_d {
+        compatible = "seeeduino-xiao";
+        #gpio-cells = <2>;
+		gpio-map-mask = <0xffffffff 0xffffffc0>;
+		gpio-map-pass-thru = <0 0x3f>;
+        gpio-map
+        = <0 0 &porta 2 0>
+        , <1 0 &porta 4 0>
+        , <2 0 &porta 10 0>
+        , <3 0 &porta 11 0>
+        , <4 0 &porta 8 0>
+        , <5 0 &porta 9 0>
+        , <6 0 &portb 8 0>
+        , <7 0 &portb 9 0>
+        , <8 0 &porta 7 0>
+        , <9 0 &porta 5 0>
+        , <10 0 &porta 6 0>
+        ;
+    };
+};
+
+&sercom0 { status = "disabled"; };
+&sercom4 { status = "disabled"; };
